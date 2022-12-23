@@ -4,6 +4,7 @@
 *.dll
 *.so
 *.dylib
+dapr-actor-sample
 
 # Test binary, built with `go test -c`
 *.test
