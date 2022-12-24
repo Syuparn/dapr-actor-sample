@@ -10,3 +10,15 @@ deploy:
       - name: redis
         repo: https://charts.bitnami.com/bitnami
         remoteChart: redis
+build:
+  tagPolicy:
+    envTemplate:
+      template: "{{.IMAGE_NAME}}:latest" # NOTE: fix tag
+  artifacts:
+    - image: myactor
+      context: .
+manifests:
+  rawYaml:
+  - manifests/state.yaml
+  - manifests/deployment.yaml
+  - manifests/service.yaml

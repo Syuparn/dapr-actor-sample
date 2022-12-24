@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: actor
+  labels:
+    app: actor
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: actor
+  template:
+    metadata:
+      labels:
+        app: actor
+      annotations:
+        dapr.io/enabled: "true"
+        dapr.io/app-id: "actorapp"
+        dapr.io/app-port: "8080"
+    spec:
+      containers:
+      - name: myactor
+        image: myactor:latest
+        ports:
+        - containerPort: 8080
